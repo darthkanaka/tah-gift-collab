@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+<style>
+  .stk-wrap { --gold: #c29d3b; --cream: #f3ead6; --green: #3e4a31; --ink: #1b1a18; }
+  .bgart { background-image: url(__BG__); background-repeat: no-repeat; background-size: calc(var(--in) * 11.113) auto; }
+  /* A: 4 inch round seal */
+  .sA { position: relative; width: calc(var(--in) * 4); height: calc(var(--in) * 4); border-radius: 50%; overflow: hidden;
+        background-position: calc(var(--in) * -2.9) calc(var(--in) * -2.4); box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 0 0 calc(var(--in) * .01) rgba(0,0,0,.08); }
+  .sA .ring { position: absolute; inset: calc(var(--in) * .14); border-radius: 50%; border: calc(var(--in) * .022) solid var(--gold); }
+  .sA .stack { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--in) * .04); padding-top: calc(var(--in) * .05); }
+  .sA .bh { width: calc(var(--in) * 2.05); }
+  .sA .x { font-family: "Instrument Serif", Georgia, serif; color: var(--gold); font-size: calc(var(--in) * .34); line-height: .6; }
+  .sA .kl { width: calc(var(--in) * 2.55); margin-top: calc(var(--in) * .02); }
+  .sA svg.arc { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sA svg.arc text { font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 3.2px; fill: var(--cream); }
+  .sA svg.arc text.gold { fill: var(--gold); font-size: 12.5px; letter-spacing: 2.6px; }
+  /* B: 4 x 2.5 inch label */
+  .sB { position: relative; width: calc(var(--in) * 4); height: calc(var(--in) * 2.5); border-radius: calc(var(--in) * .14); overflow: hidden; display: grid;
+        grid-template-columns: calc(var(--in) * 1.55) 1fr; background: #f6f1e4; box-shadow: 0 1px 2px rgba(0,0,0,.35); }
+  .sB .side { background-position: calc(var(--in) * -4.6) calc(var(--in) * -3.6); display: flex; align-items: center; justify-content: center; border-right: calc(var(--in) * .03) solid var(--gold); }
+  .sB .side img { width: calc(var(--in) * 1.25); }
+  .sB .txt { padding: calc(var(--in) * .2) calc(var(--in) * .2) calc(var(--in) * .18); display: flex; flex-direction: column; justify-content: center; gap: calc(var(--in) * .07); color: var(--ink); }
+  .sB .eyebrow { font: 600 calc(var(--in) * .085)/1.2 Inter, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #6b5a2e; }
+  .sB h4 { margin: 0; font: 400 calc(var(--in) * .235)/1 "Instrument Serif", Georgia, serif; color: var(--green); }
+  .sB p { margin: 0; font: 400 calc(var(--in) * .095)/1.4 Inter, sans-serif; color: #4a463f; }
+  .sB .eyebrow.soft { color: #8a7a52; margin-top: calc(var(--in) * .04); }
+  /* C: 3.5 inch square with a leaf-art frame */
+  .sC { position: relative; width: calc(var(--in) * 3.5); height: calc(var(--in) * 3.5); border-radius: calc(var(--in) * .12); overflow: hidden;
+        background-position: calc(var(--in) * -6.2) calc(var(--in) * -.4); box-shadow: 0 1px 2px rgba(0,0,0,.35); }
+  .sC .panel { position: absolute; inset: calc(var(--in) * .38); background: #f6f1e4; border-radius: calc(var(--in) * .05);
+        box-shadow: 0 0 0 calc(var(--in) * .02) var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--in) * .05); }
+  .sC .bh { width: calc(var(--in) * 1.65); }
+  .sC .x { font-family: "Instrument Serif", Georgia, serif; color: var(--gold); font-size: calc(var(--in) * .28); line-height: .6; }
+  .sC .kl { width: calc(var(--in) * 1.9); }
+  .sC .rule { width: calc(var(--in) * .5); height: calc(var(--in) * .02); background: var(--gold); margin: calc(var(--in) * .08) 0 calc(var(--in) * .04); }
+  .sC .cap { font: 600 calc(var(--in) * .085)/1 Inter, sans-serif; letter-spacing: .16em; color: #6b5a2e; margin-top: calc(var(--in) * .03); }
+  .sC .cap.soft { color: #8a7a52; letter-spacing: .22em; }
+
+  /* The mailer: a white paperboard rigid mailer, 12.75 x 15 inches, flap and tear strip at the top */
+  .scene { background: linear-gradient(160deg, #cfc6b8, #b9ae9d); padding: 26px; display: flex; justify-content: center; }
+  .mailer { --in: 26px; position: relative; width: calc(var(--in) * 12.75); height: calc(var(--in) * 15); background:
+            radial-gradient(circle at 30% 20%, rgba(255,255,255,.6), rgba(255,255,255,0) 60%), #f4f3ef;
+            box-shadow: 0 2px 3px rgba(0,0,0,.18), 0 14px 30px rgba(40,30,20,.28); border-radius: 2px; }
+  .mailer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(var(--in) * 1.6);
+            background: linear-gradient(180deg, #ecebe6, #f1f0ec); border-bottom: 1px solid #dad8d1; }
+  .mailer::after { content: ""; position: absolute; left: calc(var(--in) * .4); right: calc(var(--in) * .4); top: calc(var(--in) * 2.1); border-top: 1px dashed #cfccc3; }
+  .mailer .tab { position: absolute; right: calc(var(--in) * .4); top: calc(var(--in) * 1.92); width: calc(var(--in) * .9); height: calc(var(--in) * .38);
+            background: #e7e5df; border: 1px solid #d3d0c8; font: 600 6px/1 Inter, sans-serif; color: #9a968c; display: grid; place-items: center; letter-spacing: .08em; }
+  .mailer .spot { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); }
+  .mailer .spot > * { box-shadow: 0 1px 1px rgba(0,0,0,.25), 0 2px 5px rgba(0,0,0,.12); }
+  .close { --in: 62px; display: flex; justify-content: center; padding: 22px 0 8px; background: #efece6; }
+  .meta { font-size: .8rem; color: var(--text-secondary); margin: .35rem 0 0; }
+</style>
+
+<h2>A sticker for the print mailers</h2>
+<p class="subtitle">Your logo only, with "Baker's Heart × Kawika Lopez" in words. All three use Jill's Comfort and Joy background. Each card shows the sticker on a 12.75 x 15 inch white rigid mailer to scale, then the sticker up close. They differ in shape and in how much of the green shows.</p>
+
+<div class="cards stk-wrap">
+
+  <div class="card" data-choice="seal" onclick="toggleSelect(this)">
+    <div class="card-image" style="aspect-ratio:auto;display:block">
+      <div class="scene"><div class="mailer"><span class="tab">PULL</span><div class="spot">__A26__</div></div></div>
+      <div class="close">__A62__</div>
+    </div>
+    <div class="card-body"><h3>A. A round seal, 4 inches</h3><p>Full green and a gold ring, with your logo large in cream. "Baker's Heart × Kawika Lopez" runs around the top in gold, "Holiday 2026" around the bottom.</p></div>
+  </div>
+
+  <div class="card" data-choice="label" onclick="toggleSelect(this)">
+    <div class="card-image" style="aspect-ratio:auto;display:block">
+      <div class="scene"><div class="mailer"><span class="tab">PULL</span><div class="spot">__B26__</div></div></div>
+      <div class="close">__B62__</div>
+    </div>
+    <div class="card-body"><h3>B. A product label, 4 x 2.5 inches</h3><p>A green panel with your logo, then a cream side with the collaboration line, "A photograph to keep" and a few words about the print.</p></div>
+  </div>
+
+  <div class="card" data-choice="frame" onclick="toggleSelect(this)">
+    <div class="card-image" style="aspect-ratio:auto;display:block">
+      <div class="scene"><div class="mailer"><span class="tab">PULL</span><div class="spot">__C26__</div></div></div>
+      <div class="close">__C62__</div>
+    </div>
+    <div class="card-body"><h3>C. A framed square, 3.5 inches</h3><p>A cream center inside a frame of the green leaf art, like a little matted print. Your logo, then the collaboration line and "Holiday 2026".</p></div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:1.25rem">
+  <p class="label">My pick</p>
+  <p><b>A, the 4 inch round seal.</b> With only your logo it has room to be big, so it reads from across a table, and the collaboration line wraps around it like a seal. B says the most but its small type is hard to read at arm's length. C is the quietest, and looks like a tiny matted print.</p>
+</div>
